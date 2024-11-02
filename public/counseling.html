@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counseling Services - JKUAT Mental Health Support</title>
+    <link rel="stylesheet" href="counseling.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="nav-links">
+            <a href="index.html" class="btn btn-primary">Home</a>
+            <a href="resources.html">Resources</a>
+            <a href="counseling.html">Counseling</a>
+            <a href="appointment.html">Appointment</a>
+
+            <a href="login.html" class="btn btn-primary">Login</a>
+            <a href="register.html" class="btn btn-primary">Register</a>
+
+        </div>
+    </header>
+
+    <main class="counseling-main">
+        <section class="counseling-hero">
+            <h1>Counseling Services</h1>
+            <p>Professional support when you need it most</p>
+        </section>
+
+        <section class="counseling-options">
+            <h2>Available Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Online Sessions</h3>
+                    <p>Virtual counseling from the comfort of your space</p><br>
+                    <a href="onlineSession.html" class="btn btn-secondary">Book Online Session</a>
+
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-user"></i>
+                    <h3>In-Person Sessions</h3>
+                    <p>Face-to-face counseling at our campus facility</p><br>
+                    <a href="inperson.html" class="btn btn-secondary">In-Person Session</a>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Group Sessions</h3>
+                    <p>Join therapeutic group discussions</p><br>
+                    <a href="group-sessions.html" class="btn btn-secondary">Join Group Session</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-section">
+      
+            
+                <title>Appointment Scheduler</title>
+                <link rel="stylesheet" href="resources.html">
+                <link rel="stylesheet" href="appointment.css">
+            
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+            </head>
+            <body>
+                <h2>Schedule an Appointment</h2>
+                <form id="appointmentForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" required>
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" required>
+                    <button type="submit">Schedule</button>
+                </form>
+                <div id="calendar"></div>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('#calendar').fullCalendar({
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,agendaWeek,agendaDay'
+                            },
+                            events: '/appointments'
+                        });
+            
+                        $('#appointmentForm').on('submit', function(event) {
+                            event.preventDefault();
+                            const name = $('#name').val();
+                            const date = $('#date').val();
+                            const time = $('#time').val();
+                            const appointment = {
+                                title: name,
+                                start: `${date}T${time}`
+                            };
+            
+                            $.ajax({
+                                url: '/appointments',
+                                method: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify(appointment),
+                                success: function() {
+                                    $('#calendar').fullCalendar('refetchEvents');
+                                    alert('Appointment scheduled successfully!');
+                                }
+                            });
+                        });
+                    });
+                </script>
+            </body>
+            </html>
+            
+
+            <div class="booking-form">
+                <h3>Session Details</h3>
+                <form id="sessionBookingForm">
+                    <div class="form-group">
+                        <label for="sessionType">Session Type</label>
+                        <select id="sessionType" required>
+                            <option value="">Select Session Type</option>
+                            <option value="online">Online Session</option>
+                            <option value="inPerson">In-Person Session</option>
+                            <option value="group">Group Session</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sessionReason">Reason for Session</label>
+                        <textarea id="sessionReason" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferredContact">Preferred Contact Method</label>
+                        <select id="preferredContact" required>
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                    <div id="confirmationMessage" style="display:none;">
+                        <p>Booking confirmed!</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="counseling-faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>What should I expect in my first session?</h3>
+                    <p>Your first session will be an initial consultation where you'll discuss your concerns and goals with your counselor.</p>
+                </div>
+                <!-- More FAQ items -->
+            </div>
+        </section>
+
+        <section class="emergency-support">
+            <h2>Need Immediate Support?</h2>
+            <div class="emergency-container">
+                <div class="emergency-contact">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>24/7 Crisis Hotline</h3>
+                    <p>0800-XXX-XXX</p>
+                </div>
+                <div class="emergency-resources">
+                    <a href="#" class="btn btn-emergency">Crisis Resources</a>
+                    <a href="#" class="btn btn-emergency">Emergency Contacts</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Emergency Contacts</h4>
+                <p>24/7 Helpline: 0800-XXX-XXX</p>
+                <p>Email: support@jkuat.ac.ke</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="counseling.js"></script>
+    <script src="counselor-cards.js"></script>
+</body>
+</html>

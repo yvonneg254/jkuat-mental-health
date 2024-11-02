@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <header class="header">
+        <nav class="nav-menu">
+          
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="resources.html">Resources</a>
+                <a href="counseling.html">Counseling</a>
+                <a href="appointment.html">Appointment</a>
+
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+
+            </div>
+        </nav>
+    </header>
+
+    <title>Appointment Scheduler</title>
+    <link rel="stylesheet" href="resources.html">
+    <link rel="stylesheet" href="appointment.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+</head>
+<body>
+    <h2>Schedule an Appointment</h2>
+    <form id="appointmentForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+        <label for="time">Time:</label>
+        <input type="time" id="time" required>
+        <button type="submit">Schedule</button>
+    </form>
+    <div id="calendar"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: '/appointments'
+            });
+
+            $('#appointmentForm').on('submit', function(event) {
+                event.preventDefault();
+                const name = $('#name').val();
+                const date = $('#date').val();
+                const time = $('#time').val();
+                const appointment = {
+                    title: name,
+                    start: `${date}T${time}`
+                };
+
+                $.ajax({
+                    url: '/appointments',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(appointment),
+                    success: function() {
+                        $('#calendar').fullCalendar('refetchEvents');
+                        alert('Appointment scheduled successfully!');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

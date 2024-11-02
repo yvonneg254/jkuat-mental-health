@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Webinars on Mental Health</title>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #555;
+}
+
+.nav-links .active {
+    background-color: #007bff;
+}
+
+.nav-links .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links .btn:hover {
+    background-color: #0056b3;
+}
+
+main {
+    padding: 20px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature-card i {
+    font-size: 2em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.feature-card h3 {
+    color: #333;
+    margin: 10px 0;
+}
+
+.feature-card p {
+    color: #666;
+    margin: 10px 0;
+}
+
+.feature-card .button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.feature-card .button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-menu">
+            <div class="logo">Mental Wellness Hub</div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="resources.html">Resources</a>
+                <a href="counseling.html">Counseling</a>
+                <a href="appointment.html">Appointment</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="webinars">
+            <h2>Join Our Upcoming Webinars on Mental Health Topics</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Understanding Mental Health</h3>
+                    <p>Join us for a comprehensive webinar on mental health fundamentals, where experts discuss the importance of mental well-being.</p>
+                    <p><strong>Date:</strong> October 30, 2024</p>
+                    <a href="https://meet.google.com/your-meeting-id" target="_blank" class="button">Join via Google Meet</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Overcoming Anxiety</h3>
+                    <p>Learn effective techniques and strategies to manage and overcome anxiety in your daily life with our experienced counselors.</p>
+                    <p><strong>Date:</strong> November 5, 2024</p>
+                    <a href="https://meet.google.com/your-meeting-id" target="_blank" class="button">Join via Google Meet</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Building Healthy Habits</h3>
+                    <p>Discover how to establish and maintain healthy habits that support your mental and physical health.</p>
+                    <p><strong>Date:</strong> November 12, 2024</p>
+                    <a href="https://meet.google.com/your-meeting-id" target="_blank" class="button">Join via Google Meet</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Stress Management Techniques</h3>
+                    <p>Explore practical techniques to manage stress effectively and improve your overall well-being.</p>
+                    <p><strong>Date:</strong> November 19, 2024</p>
+                    <a href="https://meet.google.com/your-meeting-id" target="_blank" class="button">Join via Google Meet</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Supporting Mental Health in the Workplace</h3>
+                    <p>Understand how to create a supportive environment for mental health in professional settings.</p>
+                    <p><strong>Date:</strong> November 26, 2024</p>
+                    <a href="https://meet.google.com/your-meeting-id" target="_blank" class="button">Join via Google Meet</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Mental Wellness Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

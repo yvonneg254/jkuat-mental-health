@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Counseling Sessions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #555;
+        }
+
+        /* Group Sessions Section Styles */
+        #group-sessions-section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #group-sessions-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #counselor-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #counselor-list li {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        #counselor-list h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        #counselor-list p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-menu">
+            <div class="logo">Mental Wellness Hub</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Resources</a>
+                <a href="counseling.html">Counseling</a>
+                <a href="appointment.html">Appointment</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="group-sessions-section">
+            <h2>Group Counseling Sessions</h2>
+            <p>Join therapeutic group discussions.</p>
+            <ul id="counselor-list">
+                <!-- Counselor list will be populated here -->
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 Mental Wellness Hub. All rights reserved.</p>
+        <p><a href="privacy.html" style="color: #fff;">Privacy Policy</a> | <a href="terms.html" style="color: #fff;">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // List of counselors for group sessions
+        const counselors = [
+            {
+                name: "Dr. Sarah Johnson",
+                venue: "Conference Room A",
+                groups: ["Anxiety Support", "Depression Support"],
+                date: "Monday, March 13",
+                time: "10:00 AM EST"
+            },
+            {
+                name: "Mr. James Smith",
+                venue: "Conference Room B",
+                groups: ["Trauma Support", "Grief Support"],
+                date: "Tuesday, March 14",
+                time: "2:00 PM EST"
+            },
+            {
+                name: "Dr. Emily Davis",
+                venue: "Conference Room C",
+                groups: ["Relationship Support", "Self-Esteem Support"],
+                date: "Wednesday, March 15",
+                time: "11:00 AM EST"
+            },
+            {
+                name: "Ms. Laura Brown",
+                venue: "Conference Room D",
+                groups: ["Addiction Support", "Mental Health Awareness"],
+                date: "Thursday, March 16",
+                time: "3:00 PM EST"
+            }
+        ];
+
+        // Populate the counselor list
+        const counselorList = document.getElementById('counselor-list');
+        counselors.forEach((counselor) => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <h3>${counselor.name}</h3>
+                <p>Venue: ${counselor.venue}</p>
+                <p>Groups: ${counselor.groups.join(', ')}</p>
+                <p>Date: ${counselor.date}</p>
+                <p>Time: ${counselor.time}</p>
+                <button class="button">Join Group Session</button>
+            `;
+            counselorList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>

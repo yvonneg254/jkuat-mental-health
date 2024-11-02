@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Counseling Sessions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #555;
+        }
+
+        .nav-links .active {
+            background-color: #007bff;
+        }
+
+        .nav-links .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Online Sessions Section Styles */
+        #online-sessions {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #online-sessions h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #online-sessions p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        #counselor-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #counselor-list li {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        #counselor-list h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        #counselor-list p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        #counselor-list .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #counselor-list .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-menu">
+            <div class="logo">Mental Wellness Hub</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Resources</a>
+                <a href="counseling.html" class="active">Counseling</a>
+                <a href="appointment.html">Appointment</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="online-sessions">
+            <h2>Online Sessions</h2>
+            <p>Virtual counseling sessions available for your mental wellness. Connect with our professional counselors from the comfort of your home.</p>
+            <ul id="counselor-list">
+                <li>
+                    <h3>Dr. Sarah Johnson</h3>
+                    <p>Specializes in anxiety, depression, and stress management.</p>
+                    <a href="booking.html?counselor=dr_sarah_johnson" class="button">Book a Session</a>
+                </li>
+                <li>
+                    <h3>Mr. James Smith</h3>
+                    <p>Expert in relationship counseling and personal development.</p>
+                    <a href="booking.html?counselor=Mr. James Smith" class="button">Book a Session</a>
+                </li>
+                <li>
+                    <h3>Dr. Emily Davis</h3>
+                    <p>Focuses on family therapy and child psychology.</p>
+                    <a href="booking.html?counselor=dr_emily_davis" class="button">Book a Session</a>
+                </li>
+                <li>
+                    <h3>Ms. Laura Brown</h3>
+                    <p>Specializes in trauma recovery and grief counseling.</p>
+                    <a href="booking.html?counselor=ms_laura_brown" class="button">Book a Session</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 Mental Wellness Hub. All rights reserved.</p>
+        <p><a href="privacy.html" style="color: #fff;">Privacy Policy</a> | <a href="terms.html" style="color: #fff;">Terms of Service</a></p>
+    </footer>
+</body>
+</html>
