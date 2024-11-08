@@ -1,8 +1,7 @@
 /* Hero Section */
 .hero-section {
     height: 80vh;
-    background: 
-                url('https://i.pinimg.com/564x/20/9c/95/209c953318c39373e3fcd078cc25731c.jpg');
+    background: url('https://i.pinimg.com/564x/20/9c/95/209c953318c39373e3fcd078cc25731c.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -13,6 +12,23 @@
     font-size: xx-large;
     color: rgb(26, 24, 24);
     padding: 2rem;
+}
+
+/* Responsive adjustments for Hero Section */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh; /* Adjusted for smaller screens */
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
 /* Back and Next Buttons Styles */
@@ -36,11 +52,6 @@
     background-color: #0056b3;
 }
 
-.hero-section h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
 /* Features Section */
 .features {
     padding: 4rem 5%;
@@ -55,6 +66,14 @@
     margin-top: 2rem;
 }
 
+/* Responsive adjustments for Features Section */
+@media (max-width: 768px) {
+    .feature-grid {
+        gap: 1rem;
+        padding: 2rem 2%;
+    }
+}
+
 .feature-card {
     background: white;
     padding: 2rem;
@@ -66,6 +85,13 @@
 
 .feature-card:hover {
     transform: translateY(-5px);
+}
+
+/* Disable hover effect on touch devices */
+@media (hover: none) {
+    .feature-card:hover {
+        transform: none;
+    }
 }
 
 .feature-card i {
@@ -87,6 +113,14 @@
     margin-top: 2rem;
 }
 
+/* Responsive adjustments for Quick Access Section */
+@media (max-width: 768px) {
+    .quick-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
 .emergency-btn, .self-help-btn {
     padding: 1rem 2rem;
     border-radius: 5px;
@@ -104,4 +138,16 @@
 .self-help-btn {
     background-color: #28a745;
     color: white;
+}
+
+/* Responsive Button Styles */
+.nav-buttons a, .emergency-btn, .self-help-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .nav-buttons {
+        justify-content: center;
+    }
 }

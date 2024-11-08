@@ -1,0 +1,16 @@
+body {
+    background-color: #f0f4f8;
+}
+
+h1 {
+    color: #333;
+}
+
+.result {
+    font-weight: bold;
+    color: #333;
+}
+
+.resources h2 {
+    margin-bottom: 10px;
+}

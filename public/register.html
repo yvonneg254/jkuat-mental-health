@@ -4,61 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - JKUAT Mental Health Support</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="register.css">
-
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
     <header class="header">
-        <nav class="nav-menu">
-          
-            <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="resources.html">Resources</a>
-                <a href="counseling.html">Counseling</a>
-                <a href="appointment.html">Appointment</a>
-
-                <a href="login.html" class="btn btn-primary">Login</a>
-                <a href="register.html" class="btn btn-primary">Register</a>
-
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">JKUAT Mental Health</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                        <li class="nav-item"><a class="nav-link" href="counseling.html">Counseling</a></li>
+                        <li class="nav-item"><a class="nav-link" href="appointment.html">Appointment</a></li>
+                        <li class="nav-item"><a class="btn btn-primary mr-2" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="btn btn-primary mr-2" href="profileSettings.html">Profile</a></li>
+                        <li class="nav-item"><a class="btn btn-primary" href="register.html">Register</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
+
+    <div class="container my-5">
         <div class="auth-container">
-            <h2>Create Account</h2>
+            <h2 class="text-center">Create Account</h2>
+
+            <!-- Sign up with Google button -->
+            <div class="social-login text-center mb-4">
+                <button id="googleSignIn" class="google-btn btn btn-primary w-100">
+                    <img src="https://th.bing.com/th/id/OIP.DoYuESoRecI9l-vyqdrEnQHaE-?w=227&h=180&c=7&r=0&o=5&pid=1.7" alt="Google icon" style="width: 20px; height: 20px;"> Sign up with Google
+                </button>
+                <p class="or-separator">or</p>
+            </div>
+
             <form id="registerForm" class="auth-form">
                 <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" required>
+                    <label for="pseudonym">Pseudonym</label>
+                    <input type="text" id="pseudonym" class="form-control" placeholder="Choose a pseudonym" required>
+                    <small class="form-text text-muted">
+                        Choose a unique, anonymous nickname. Avoid using personal information like your real name or email. 
+                        Examples: "CalmMind123" or "WellnessWarrior"
+                    </small>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="userType">User Type</label>
-                    <select id="userType" required>
-                        <option value="">Select User Type</option>
+                    <select id="userType"  required>
+                        <option value=>Select User Type</option>
+                        <option value="counselor">Counselor</option>
                         <option value="student">Student</option>
                         <option value="staff">Staff</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" required>
+                    <input type="password" id="password" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" required>
+                    <input type="password" id="confirmPassword" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
-                <p>Already have an account? <a href="login.html">Login</a></p>
+<!-- Registration Page -->
+<form id="registrationForm" action="/api/register" method="POST">
+    <!-- Input fields for registration (e.g., username, email, password) -->
+    <button type="submit" class="btn btn-primary w-100">Register</button>
+</form>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevents default form submission
+
+        // Collect form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+        
+        console.log("Data being sent:", data); // Debugging log: View the collected data
+
+        // Send data to the server using fetch API
+        fetch(this.action, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            console.log("Server response status:", response.status); // Log response status
+
+            if (!response.ok) {
+                // Retrieve and log the response text to get a more specific error message
+                return response.text().then(errorText => {
+                    console.error("Detailed error:", errorText);
+                    throw new Error(`Registration failed: ${errorText || 'Unknown error'}`);
+                });
+            }
+
+            return response.json();
+        })
+        .then(() => {
+            // Redirect to counseling page upon successful registration
+            console.log("Registration successful. Redirecting to counseling page.");
+            window.location.href = "counseling.html";
+        })
+        .catch(error => {
+            // Display error message if registration fails and log it for debugging
+            console.error("Error caught in catch block:", error);
+            alert(`Error: ${error.message}`);
+        });
+    });
+</script>
+
+            <p class="text-center mt-3">Already have an account? <a href="login.html">Login</a></p>
             </form>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <!-- Same footer as index.html -->
-    </footer>
-    <script src="register.js"></script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="server.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript for Google Sign-In and Registration -->
+    <script>
+        // Google Sign-In function
+        function onSignIn(googleUser) {
+            var id_token = googleUser.getAuthResponse().id_token;
+
+            // Send the ID token to your server for verification
+            fetch('/api/auth/google', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id_token: id_token })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/index.html';
+                } else {
+                    alert('Google Sign-In failed: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred during Google Sign-In.');
+            });
+        }
+
+        // Register button functionality
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const pseudonym = document.getElementById('pseudonym').value;
+            const email = document.getElementById('email').value;
+            const userType = document.getElementById('userType').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Perform basic validation
+            if (!pseudonym || !email || !userType || !password || password !== confirmPassword) {
+                alert('Please fill out all fields correctly.');
+                return;
+            }
+
+            // Send registration data to your server
+            fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pseudonym: pseudonym,
+                    email: email,
+                    userType: userType,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Registration successful! You can now log in.');
+                    window.location.href = '/login.html';
+                } else {
+                    alert('Registration failed: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred during registration.');
+            });
+        });
+
+        // Google Sign-In button click handler
+        document.getElementById('googleSignIn').onclick = function() {
+            gapi.load('auth2', function() {
+                const auth2 = gapi.auth2.init({
+                    client_id: 'YOUR_CLIENT_ID',
+                    scope: 'profile email'
+                });
+                auth2.signIn().then(onSignIn);
+            });
+        };
+    </script>
 </body>
 </html>

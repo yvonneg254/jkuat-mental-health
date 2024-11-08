@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JKUAT Mental Health - FAQ / Support</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f4f8;
+        }
+        h1 {
+            color: #333;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+        .disclaimer {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">FAQ / Support</h1>
+
+        <div class="mt-4">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h5>1. What services does the mental health platform offer?</h5>
+                <p>The platform provides resources, counseling services, and support for students and staff.</p>
+            </div>
+            <div class="faq-item">
+                <h5>2. How can I access counseling services?</h5>
+                <p>Counseling services can be accessed through our appointment scheduling page on the platform.</p>
+            </div>
+            <div class="faq-item">
+                <h5>3. Is my information kept confidential?</h5>
+                <p>Yes, all information is kept confidential and used only for the purposes of providing support.</p>
+            </div>
+            <div class="faq-item">
+                <h5>4. What should I do in a mental health emergency?</h5>
+                <p>If you are in immediate danger or require urgent help, please contact emergency services or visit the nearest health facility.</p>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h2>Need More Help?</h2>
+            <form id="supportForm">
+                <div class="form-group">
+                    <label for="supportName">Name</label>
+                    <input type="text" id="supportName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="supportEmail">Email</label>
+                    <input type="email" id="supportEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="supportMessage">Message</label>
+                    <textarea id="supportMessage" class="form-control" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+            <div id="supportResult" class="mt-3 text-center"></div>
+        </div>
+
+        <!-- Privacy Disclaimer -->
+        <div class="mt-4 disclaimer">
+            <p>Your information will be kept confidential and used solely to respond to your inquiries.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById("supportForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get support form values
+            const name = document.getElementById("supportName").value;
+            const email = document.getElementById("supportEmail").value;
+            const message = document.getElementById("supportMessage").value;
+
+            // Display result message
+            const supportMessage = `Thank you, ${name}. Your message has been submitted successfully!`;
+            document.getElementById("supportResult").innerText = supportMessage;
+
+            // Optionally, log this information to the console or send it to a server
+            console.log("Support Request Submitted:", {
+                name,
+                email,
+                message
+            });
+
+            // Clear form fields after submission
+            document.getElementById("supportForm").reset();
+        });
+    </script>
+</body>
+</html>
